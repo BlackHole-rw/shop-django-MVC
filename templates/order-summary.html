@@ -26,16 +26,16 @@
                   <tr>
                       <th scope="row">{{ forloop.counter}}</th>
                       <th>{{ order_item.item.title }}</th>
-                      <th>${{ order_item.item.price }}</th>
+                      <th>${{ order_item.item.price_discount }}</th>
                       <th>
                           <a href="{% url 'core:remove_single_from_cart' order_item.item.slug %}"><i class="fas fa-minus mr-3"></i></a>
                           {{ order_item.quantity }}
                           <a href="{% url 'core:add_single_to_cart' order_item.item.slug %}"><i class="fas fa-plus ml-3"></i></a>
                       </th>
                       <th>
-                          {% if order_item.price_discount %}
+                          {% if order_item.item.price_discount %}
                             ${{ order_item.get_total_item_discount_price}}
-                            <span class="bagde bagde-primary"> Saving ${{order_item.get_amount_saved }}</span>
+                            <span class="bagde bagde-primary ml-4"> Saving ${{order_item.get_amount_saved }}</span>
                           {% else %}
                             ${{ order_item.get_total_item_price }}
                           {% endif %}

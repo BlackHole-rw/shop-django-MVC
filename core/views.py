@@ -214,13 +214,6 @@ class PaymentView(View):
             return redirect("/")
 
 
-
-def checkout_page(request):
-    context = {
-        'items': Item.objects.all()
-    }
-    return render(request, "checkout.html", context)
-
 @login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
